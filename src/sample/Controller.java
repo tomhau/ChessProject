@@ -22,6 +22,13 @@ public class Controller {
         drawSquare(s);
 
     }
+
+
+    private void init1(){
+        Square s = new Square(50,Color.BLACK,100,100);
+        drawSquare(s);
+
+    }
     /**
      * Draws a single square on the background
      * @param s the square to be drawn
