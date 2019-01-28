@@ -23,6 +23,7 @@ public class Board {
     public Board()
     {
         this.placeAllSquares();
+        this.placeAllPieces();   //New
     }
 
     private void placeAllSquares(){
@@ -45,6 +46,19 @@ public class Board {
             count++;
         }
     }
+
+    // New
+    private void placeAllPieces()
+    {
+        // Placing the white knight:
+        squares[7][1].setPiece(new Knight("file:Chess_nlt60.png",Color.WHITE));
+
+        // Placing the black rook:
+        squares[0][7].setPiece(new Rook("file:Chess_rdt60.png",Color.BLACK));
+
+        // ETC
+    }
+
     /**
      * For drawing the board based on squares
      * @return an array of all square objects on this board

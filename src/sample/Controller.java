@@ -14,18 +14,17 @@ public class Controller {
 
     private Board board; // (1) New
 
-
     @FXML
     private Canvas backg, foreg;
 
-
     @FXML
-    private void init(){
-        // Square s = new Square(50,Color.BLACK,100,100);
-        // drawSquare(s);
+    private void init()
+    {
+        board = new Board();
+        drawBoard();
 
-        board = new Board(); // (2) New
-        drawBoard();         // (2) New
+        drawPieces();  // New
+
     }
 
     private void drawBoard()  // (3) New
@@ -33,6 +32,17 @@ public class Controller {
         for (Square s : this.board.getAllSquares())
         {
             drawSquare(s);
+        }
+    }
+
+
+    private void drawPieces(){
+        for (Square s : board.getAllSquares())
+        {
+            if (s.getPiece()!=null)
+            {
+                drawImage(s,s.getPiece().getImageUrl());
+            }
         }
     }
 
@@ -46,6 +56,19 @@ public class Controller {
         GraphicsContext gc = backg.getGraphicsContext2D();
         gc.setFill(s.getColor());
         gc.fillRect(s.getPosX(), s.getPosY(), s.getSize(), s.getSize());
+    }
+
+
+    /**
+     * Draws a single image on a single square
+     * @param s  the square where the image i placed
+     * @param url the name of the image
+     */
+    private void drawImage(Square s, String url)
+    {
+        GraphicsContext gc = foreg.getGraphicsContext2D();
+        Image image = new Image(url);
+        gc.drawImage(image, s.getPosX(), s.getPosY(), s.getSize(), s.getSize());
     }
 
 

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+    <children>
+        <StackPane prefHeight="200.0" prefWidth="320.0">
+            <children>
+                <Canvas fx:id="backg" height="597.0" onMouseEntered="#init" width="600.0" />
+                <Canvas fx:id="foreg" height="597.0" onMouseEntered="#init" width="601.0" />
+            </children>
+        </StackPane>
+    </children>
+</AnchorPane>
