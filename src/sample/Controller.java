@@ -15,14 +15,13 @@ public class Controller {
     private Board board; // (1) New
 
     @FXML
-    private Canvas backg, foreg;
+    private Canvas backg, foreg, top;
 
     @FXML
     private void init()
     {
         board = new Board();
         drawBoard();
-
         drawPieces();  // New
 
     }
@@ -70,6 +69,39 @@ public class Controller {
         Image image = new Image(url);
         gc.drawImage(image, s.getPosX(), s.getPosY(), s.getSize(), s.getSize());
     }
+
+    // New
+    private void clearMarkedSquare(Square s)
+    {
+        GraphicsContext gc = top.getGraphicsContext2D();
+        gc.clearRect(s.getPosX(), s.getPosY(), s.getSize(), s.getSize());
+    }
+    // New
+    private void drawMarker(Square s)
+    {
+        GraphicsContext gc = top.getGraphicsContext2D();
+        gc.setFill(Color.BLUE);
+        gc.fillRect(s.getPosX(), s.getPosY(), s.getSize(), s.getSize());
+    }
+
+    // NEW
+    @FXML
+    private void handlePressed(MouseEvent event) {
+        System.out.println("(debug), x = "+ event.getX()+", y = "+event.getY());
+        Square actualSquare = board.getSquareAtPosition((int) event.getX(), (int) event.getY());
+        System.out.println("(debug), index_x = " + actualSquare.getPosX()+", index_y = "+actualSquare.getPosY() + " is the upper left position of the pressed square");
+        drawMarker(actualSquare);
+    }
+    // New
+    @FXML
+    private void handleReleased(MouseEvent event) {
+        Square actualSquare = board.getSquareAtPosition((int) event.getX(), (int) event.getY());
+        System.out.println("(debug), index_x = " + actualSquare.getPosX()+", index_y = "+actualSquare.getPosY() + " is the upper left position of the released square");
+
+        clearMarkedSquare(actualSquare);
+
+    }
+
 
 
 }

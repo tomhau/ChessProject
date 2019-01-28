@@ -34,7 +34,7 @@ public class Board {
             for(int col = 0; col < NUMBEROFSQUARES; col++) //
             {
                 count++;
-                System.out.println("count = "+count+", row = "+row+", col = "+col);
+                // System.out.println("count = "+count+", row = "+row+", col = "+col);
                 if (count%2 ==0)
                 {
                     squares[row][col] = new Square(SIZEOFSQUARE,Color.WHITE ,col*SIZEOFSQUARE, row*SIZEOFSQUARE);
@@ -51,12 +51,12 @@ public class Board {
     private void placeAllPieces()
     {
         // Placing the white knight:
-        squares[7][1].setPiece(new Knight("file:Chess_nlt60.png",Color.WHITE));
+        squares[7][1].setPiece(new Knight("file:src/sample/resources/Chess_nlt60.png",Color.WHITE)); // Update this url !!
 
         // Placing the black rook:
-        squares[0][7].setPiece(new Rook("file:Chess_rdt60.png",Color.BLACK));
+        squares[0][7].setPiece(new Rook("file:src/sample/resources/Chess_rdt60.png",Color.BLACK));  // Update this url
 
-        // ETC
+        // ETC TODO
     }
 
     /**
@@ -77,6 +77,15 @@ public class Board {
         }
         return result;
     }
+
+    // NEW
+    public Square getSquareAtPosition(int x, int y)
+    {
+        int posX = x/SIZEOFSQUARE;
+        int posY = y/SIZEOFSQUARE;
+        return this.squares[posY][posX];
+    }
+
 
 
 

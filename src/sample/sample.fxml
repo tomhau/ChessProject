@@ -11,8 +11,9 @@
     <children>
         <StackPane prefHeight="200.0" prefWidth="320.0">
             <children>
-                <Canvas fx:id="backg" height="597.0" onMouseEntered="#init" width="600.0" />
-                <Canvas fx:id="foreg" height="597.0" onMouseEntered="#init" width="601.0" />
+                <Canvas fx:id="backg" height="600.0" onMouseEntered="#init" width="600.0" />
+                <Canvas fx:id="foreg" height="600.0" onMouseEntered="#init" width="600.0" />
+                <Canvas fx:id="top" height="600.0" onMouseEntered="#init" onMousePressed="#handlePressed" onMouseReleased="#handleReleased"  width="600.0" />
             </children>
         </StackPane>
     </children>
