@@ -7,13 +7,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
     <children>
         <StackPane prefHeight="200.0" prefWidth="320.0">
             <children>
                 <Canvas fx:id="backg" height="600.0" onMouseEntered="#init" width="600.0" />
                 <Canvas fx:id="foreg" height="600.0" onMouseEntered="#init" width="600.0" />
                 <Canvas fx:id="top" height="600.0" onMouseEntered="#init" onMousePressed="#handlePressed" onMouseReleased="#handleReleased"  width="600.0" />
+
             </children>
         </StackPane>
     </children>

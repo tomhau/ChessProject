@@ -1,4 +1,4 @@
-package sample;
+package domain;
 
 import javafx.scene.paint.Color;
 
@@ -17,7 +17,7 @@ public class Board {
      */
     private final int SIZEOFSQUARE = 75;
 
-    private final Square [][] squares = new Square[NUMBEROFSQUARES][NUMBEROFSQUARES];
+    private final Square[][] squares = new Square[NUMBEROFSQUARES][NUMBEROFSQUARES];
 
 
     public Board()
@@ -51,10 +51,10 @@ public class Board {
     private void placeAllPieces()
     {
         // Placing the white knight:
-        squares[7][1].setPiece(new Knight("file:src/sample/resources/Chess_nlt60.png",Color.WHITE)); // Update this url !!
+        squares[7][1].setPiece(new Knight("file:src/presentation/resources/Chess_nlt60.png",Color.WHITE)); // Update this url !!
 
         // Placing the black rook:
-        squares[0][7].setPiece(new Rook("file:src/sample/resources/Chess_rdt60.png",Color.BLACK));  // Update this url
+        squares[0][7].setPiece(new Rook("file:src/presentation/resources/Chess_rdt60.png",Color.BLACK));  // Update this url
 
         // ETC TODO
     }
@@ -85,10 +85,5 @@ public class Board {
         int posY = y/SIZEOFSQUARE;
         return this.squares[posY][posX];
     }
-
-
-
-
-
 
 }

@@ -1,11 +1,11 @@
-package sample;
+package domain;
 import javafx.scene.paint.Color;
 
 /**
  *
  * @author tha
  */
-public class Knight extends Piece 
+public class Knight extends Piece
 {
     private int x;
     

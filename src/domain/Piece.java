@@ -1,11 +1,11 @@
-package sample;
+package domain;
 import javafx.scene.paint.Color;
 
 /**
  *
  * @author tha
  */
-public abstract class Piece {
+public class Piece {
     private final String imageUrl;
     private final Color color;
     

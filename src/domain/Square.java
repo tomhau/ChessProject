@@ -1,4 +1,4 @@
-package sample;
+package domain;
 
 
 /**
@@ -6,6 +6,7 @@ package sample;
  * @author tha
  */
 
+import domain.Piece;
 import javafx.scene.paint.Color;
 
 
@@ -31,11 +32,11 @@ public class Square {
         this.posY = posY;
     }
 
-    public int getSize(){
+    public int getSize() {
         return this.size;
     }
 
-    public void setSize(int size){
+    public void setSize(int size) {
         this.size = size;
     }
 
@@ -62,22 +63,10 @@ public class Square {
     }
 
 
-
-
-    public int getPosY() {
+    public int getPosY()
+    {
         return posY;
     }
 
-
-
-    /*
-    public Piece getPiece() {
-        return piece;
-    }
-
-    public void setPiece(Piece piece) {
-        this.piece = piece;
-    }
-    */
 }
 
