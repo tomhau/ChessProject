@@ -23,7 +23,7 @@ public class Square {
 
     private int posY;
 
-    private Piece piece;  // New
+    private Piece piece;
 
     public Square(int size, Color color, int posX, int posY) {
         this.size = size;
@@ -52,12 +52,12 @@ public class Square {
         return posX;
     }
 
-    // New
+
     public Piece getPiece() {
         return piece;
     }
 
-    // New
+
     public void setPiece(Piece piece) {
         this.piece = piece;
     }
@@ -68,5 +68,12 @@ public class Square {
         return posY;
     }
 
+    public int getXIndex(){
+        return this.posX/Board.SIZEOFSQUARE;
+    }
+
+    public int getYIndex(){
+        return this.posY/Board.SIZEOFSQUARE;
+    }
 }
 

@@ -15,7 +15,7 @@ public class Board {
     /**
      * The size of a square in pixels
      */
-    private final int SIZEOFSQUARE = 75;
+    public static final int SIZEOFSQUARE = 75;
 
     private final Square[][] squares = new Square[NUMBEROFSQUARES][NUMBEROFSQUARES];
 
@@ -78,7 +78,12 @@ public class Board {
         return result;
     }
 
-    // NEW
+    /**
+     * Gets the square
+     * @param x
+     * @param y
+     * @return
+     */
     public Square getSquareAtPosition(int x, int y)
     {
         int posX = x/SIZEOFSQUARE;

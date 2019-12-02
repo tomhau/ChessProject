@@ -7,8 +7,7 @@ import javafx.scene.paint.Color;
  */
 public class Knight extends Piece
 {
-    private int x;
-    
+
     
     public Knight(String imageUrl, Color color) {
         super(imageUrl, color);

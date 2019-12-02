@@ -11,7 +11,17 @@ import domain.Square;
 
 public class Controller {
 
-    private Board board; // (1) New
+    private Board board;
+
+    /**
+     * Remembers square-coordinates and piece-attributes picture, color
+     */
+    private Square tempSquare;
+
+    /**
+     *
+     */
+    private boolean moveInProgress;
 
     @FXML
     private Canvas backg, foreg, top;
@@ -68,36 +78,71 @@ public class Controller {
         gc.drawImage(image, s.getPosX(), s.getPosY(), s.getSize(), s.getSize());
     }
 
-    // New
+    /**
+     * Clears the top layer at this square
+     * @param s the square to be cleared
+     */
     private void clearMarkedSquare(Square s)
     {
         GraphicsContext gc = top.getGraphicsContext2D();
         gc.clearRect(s.getPosX(), s.getPosY(), s.getSize(), s.getSize());
     }
-    // New
+
+    /**
+     * Draws a blue rectangle at this square
+     * @param s
+     */
     private void drawMarker(Square s)
     {
         GraphicsContext gc = top.getGraphicsContext2D();
-        gc.setFill(Color.BLUE);
-        gc.fillRect(s.getPosX(), s.getPosY(), s.getSize(), s.getSize());
+        gc.setStroke(Color.BLUE);
+        gc.strokeRect(s.getPosX(), s.getPosY(), s.getSize(), s.getSize());
     }
 
-    // NEW
+    /**
+     * Decides if there is a piece on this square
+     * @param s The square
+     * @return does the square have a piece attached
+     */
+    private boolean hasPiece(Square s){
+        boolean hasPiece = false;
+        if (s.getPiece()!=null){
+             hasPiece=true;
+        }
+        return hasPiece;
+    }
+
+
+    /**
+     * Triggered at the start of a move
+     * @param event
+     */
     @FXML
     private void handlePressed(MouseEvent event) {
-        System.out.println("(debug), x = "+ event.getX()+", y = "+event.getY());
+
         Square actualSquare = board.getSquareAtPosition((int) event.getX(), (int) event.getY());
-        System.out.println("(debug), index_x = " + actualSquare.getPosX()+", index_y = "+actualSquare.getPosY() + " is the upper left position of the pressed square");
         drawMarker(actualSquare);
+
+        this.moveInProgress = hasPiece(actualSquare);
+        tempSquare = actualSquare;
+        System.out.println("(debug) moveInProgress = " +this.moveInProgress);
+
+        System.out.println("(debug) index in x-direction : " + actualSquare.getXIndex());
+        System.out.println("(debug) index in y-direction : " + actualSquare.getYIndex());
     }
-    // New
+
+    /**
+     * Triggered at the end of a move
+     * @param event
+     */
     @FXML
     private void handleReleased(MouseEvent event) {
         Square actualSquare = board.getSquareAtPosition((int) event.getX(), (int) event.getY());
-        System.out.println("(debug), index_x = " + actualSquare.getPosX()+", index_y = "+actualSquare.getPosY() + " is the upper left position of the released square");
 
-        clearMarkedSquare(actualSquare);
 
+        clearMarkedSquare(tempSquare);//
+
+        this.moveInProgress=false;
     }
 
 
