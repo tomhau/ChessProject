@@ -6,8 +6,8 @@ import javafx.scene.paint.Color;
  * @author tha
  */
 public class Piece {
-    private final String imageUrl;
-    private final Color color;
+    private String imageUrl;
+    private Color color;
     
   
     public Piece(String imageUrl, Color color) {
@@ -15,13 +15,13 @@ public class Piece {
         this.color = color;
     }
 
-    // NEW 
+
     public Color getColor() {
-        return color;
+        return this.color;
     }
-    // NEW
+
     public String getImageUrl() {
-        return imageUrl;
+        return this.imageUrl;
     }
     
     /**

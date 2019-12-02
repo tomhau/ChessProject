@@ -27,7 +27,7 @@ public class Controller {
     private Canvas backg, foreg, top;
 
     @FXML
-    private void init()
+    private void initialize()
     {
         board = new Board();
         drawBoard();
@@ -82,9 +82,16 @@ public class Controller {
      * Clears the top layer at this square
      * @param s the square to be cleared
      */
-    private void clearMarkedSquare(Square s)
+    private void clearMarkedSquare(Square s, boolean isTop)
     {
-        GraphicsContext gc = top.getGraphicsContext2D();
+        GraphicsContext gc = null;
+        if (isTop){
+            gc = top.getGraphicsContext2D();
+        }
+        else{
+            gc = foreg.getGraphicsContext2D();
+        }
+
         gc.clearRect(s.getPosX(), s.getPosY(), s.getSize(), s.getSize());
     }
 
@@ -111,26 +118,26 @@ public class Controller {
         }
         return hasPiece;
     }
-
-
     /**
      * Triggered at the start of a move
      * @param event
      */
     @FXML
     private void handlePressed(MouseEvent event) {
-
         Square actualSquare = board.getSquareAtPosition((int) event.getX(), (int) event.getY());
         drawMarker(actualSquare);
-
+        // step 1 check that we have a piece
         this.moveInProgress = hasPiece(actualSquare);
         tempSquare = actualSquare;
+        // step 2
+        if (this.moveInProgress)
+        {
+            clearMarkedSquare(actualSquare, false);
+        }
         System.out.println("(debug) moveInProgress = " +this.moveInProgress);
-
         System.out.println("(debug) index in x-direction : " + actualSquare.getXIndex());
         System.out.println("(debug) index in y-direction : " + actualSquare.getYIndex());
     }
-
     /**
      * Triggered at the end of a move
      * @param event
@@ -138,10 +145,14 @@ public class Controller {
     @FXML
     private void handleReleased(MouseEvent event) {
         Square actualSquare = board.getSquareAtPosition((int) event.getX(), (int) event.getY());
-
-
-        clearMarkedSquare(tempSquare);//
-
+        System.out.println("actualSquare"+ actualSquare.getPosX());
+        clearMarkedSquare(tempSquare,true);//
+        // step 3
+        if (this.moveInProgress)
+        {
+            actualSquare.setPiece(tempSquare.getPiece());
+            drawImage(actualSquare, tempSquare.getPiece().getImageUrl());
+        }
         this.moveInProgress=false;
     }
 
