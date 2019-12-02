@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import domain.Square;
+import java.util.ArrayList;
 
 public class Controller {
 
@@ -126,6 +127,14 @@ public class Controller {
     private void handlePressed(MouseEvent event) {
         Square actualSquare = board.getSquareAtPosition((int) event.getX(), (int) event.getY());
         drawMarker(actualSquare);
+
+        ArrayList<Square> possibleMoves = actualSquare.getPiece().getPotentialMoves(actualSquare);
+
+        for (Square s : possibleMoves){
+            drawMarker(s);
+        }
+
+
         // step 1 check that we have a piece
         this.moveInProgress = hasPiece(actualSquare);
         tempSquare = actualSquare;

@@ -1,5 +1,6 @@
 package domain;
 import javafx.scene.paint.Color;
+import java.util.ArrayList;
 
 /**
  *
@@ -33,6 +34,14 @@ public class Piece {
             return true;
         }
         return false;
+    }
+
+    /**
+     * To move a piece on the board computes the possible moves
+     * @param s the actual square position
+     */
+    public ArrayList<Square> getPotentialMoves(Square s){
+        return null;
     }
     
     @Override
